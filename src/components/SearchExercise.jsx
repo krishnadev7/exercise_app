@@ -19,7 +19,7 @@ const SearchExercise = ({bodyPart,setBodyPart,exercises,setExercises}) => {
     fetchExerciseData();
   },[])
 
-  const handleChange = async e => {
+  const handleSearch = async e => {
     e.preventDefault();
     if (search) {
       const exerciseData = await fetchData(
@@ -29,10 +29,10 @@ const SearchExercise = ({bodyPart,setBodyPart,exercises,setExercises}) => {
 
       const searchedExercises = exerciseData.filter(
         exercise =>
-          exercise.name.toLowerCase().includes(search) ||
-          exercise.target.toLowerCase().includes(search) ||
-          exercise.equipement.toLowerCase().includes(search) ||
-          exercise.bodyPart.toLowerCase().includes(search)
+          exercise.name?.toLowerCase().includes(search) ||
+          exercise.target?.toLowerCase().includes(search) ||
+          exercise.equipement?.toLowerCase().includes(search) ||
+          exercise.bodyPart?.toLowerCase().includes(search)
       );
       setSearch('');
       setExercises(searchedExercises);
@@ -73,7 +73,7 @@ const SearchExercise = ({bodyPart,setBodyPart,exercises,setExercises}) => {
         />
         <Button
           className='search-btn'
-          onClick={handleChange}
+          onClick={handleSearch}
           sx={{
             bgcolor: '#FF2625',
             color: '#fff',

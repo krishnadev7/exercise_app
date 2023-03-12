@@ -1,4 +1,4 @@
-import { color, height, Stack } from '@mui/system';
+import { Stack } from '@mui/system';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/images/Logo.png';

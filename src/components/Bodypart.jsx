@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import { Stack } from '@mui/system';
 import Icon from '../assets/icons/gym.png';
 
@@ -17,8 +18,20 @@ function Bodypart({ item, bodyPart, setBodyPart }) {
         cursor: 'pointer',
         gap: '47px',
       }}
+      onClick={() => {
+        setBodyPart(item);
+        window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' });
+      }}
     >
       <img src={Icon} style={{ height: '40px', width: '40px' }} alt='' />
+      <Typography
+        fontSize='24px'
+        fontWeight='bold'
+        color='#3A1212'
+        textTransform='capitialize'
+      >
+        {item}
+      </Typography>
     </Stack>
   );
 }
