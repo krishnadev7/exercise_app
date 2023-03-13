@@ -33,13 +33,16 @@ const Exercise = ({ exercises, bodyPart, setExercises }) => {
 
   const indexOfLastExercise = currentPage * exercisesPerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
-  const currentExercises = exercises.slice(indexOfFirstExercise,indexOfLastExercise)
+  const currentExercises = exercises.slice(
+    indexOfFirstExercise,
+    indexOfLastExercise
+  );
 
   const paginate = (e, value) => {
     setCurrentPage(value);
     window.scrollTo({ top: '1800', behavior: 'smooth' });
   };
-  
+
   return (
     <Box id='exercises' sx={{ mt: { lg: '109px' } }} mt='50px' p='20px'>
       <Typography variant='h3'>Showing Results...</Typography>

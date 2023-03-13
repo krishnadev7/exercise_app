@@ -19,7 +19,7 @@ function Home() {
         setExercises={setExercises}
       />
       <Exercise
-        bodyPart={Bodypart}
+        bodyPart={bodyPart}
         exercises={exercises}
         setExercises={setExercises}
       />
