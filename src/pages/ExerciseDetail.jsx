@@ -4,10 +4,11 @@ import { useParams } from 'react-router-dom';
 import { Details } from '../components/Details';
 import { ExercisesVideos } from '../components/ExercisesVideos';
 import { SimilarExercise } from '../components/SimilarExercise';
-import { exerciseOptions, fetchData } from '../utlis/fetchData';
+import { exerciseOptions, fetchData, youtubeOptions } from '../utlis/fetchData';
 
 function ExerciseDetail() {
   const [exerciseDetail, setExerciseDetail] = useState({});
+  const [exerciseVideos, setExerciseVideos] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -21,14 +22,22 @@ function ExerciseDetail() {
         exerciseOptions
       );
       setExerciseDetail(exerciseDetailData);
+      const exerciseVideoData = await fetchData(
+        `${youtubeSearchURL}/search?q=${exerciseDetail.name}`,
+        youtubeOptions
+      );
+      setExerciseVideos(exerciseVideoData);
     };
     fetchExercisesData();
   }, [id]);
 
   return (
     <Box>
-      <Details exerciseDetail={exerciseDetail}/>
-      <ExercisesVideos />
+      <Details exerciseDetail={exerciseDetail} />
+      <ExercisesVideos
+        // exerciseVideos={exerciseVideos}
+        // name={exerciseDetail.name}
+      />
       <SimilarExercise />
     </Box>
   );
